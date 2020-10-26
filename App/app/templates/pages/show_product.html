@@ -1,0 +1,44 @@
+{% extends 'layouts/main.html' %}
+{% block title %}{{ job.number }} | Job{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ job.number }}
+			<button class="delete-button" id="delete-artist_btn" data-id="{{employee.id}}" title="Delete Job">
+				&cross; 
+			</button>
+			<a href='/jobs/{{job.id}}/edit' class=edit-button id=edit-artist_btn title="Edit Job">
+				<i class="fas fa-edit"></i>
+			</a>
+		</h1>
+		<p class="subtitle">
+			ID: {{ job.id }}
+		</p>
+		<p>
+			<i class="fas fa-globe-americas"></i> {{ job.number }}
+		</p>
+		<p>
+			<i class="fas fa-map-marker"></i> {{ job.create_date }}
+		</p>
+		<p>
+			<i class="fas fa-phone-alt"></i> {{ job.type }}
+		</p>
+		<p>
+			<i class="fas fa-link"></i>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" id="job-completed" value= "{{ job.completed }}">
+					<label class="form-check-label" for="inlineCheckbox1">Completed</label>
+			  	</div>
+		</p>
+		<p>
+			<i class="fab fa-facebook-f"></i> {{ job.hours_worked }}
+		</p>
+		<p>
+			<i class="fas fa-map-marker"></i> {{ job.hours_budget }}
+		</p>
+	</div>
+</div>
+
+{% endblock %}
+

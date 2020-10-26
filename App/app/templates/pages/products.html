@@ -1,0 +1,19 @@
+{% extends 'layouts/main.html' %}
+{% block title %}MyFridge | Products{% endblock %}
+{% block content %}
+{% for product in products %}
+<a href="/products/{{ product.id }}"><h3>{{ product.name }}</h3></a>
+	<ul class="items">
+	{% for product in user.products %}
+		<li>
+			<a href="/products/{{ product.id }}">
+				<i class="fas fa-toolbox"></i>
+				<div class="item">
+					<h5>{{ product.name }}</h5>
+				</div>				
+			</a>
+		</li>
+		{% endfor %}
+	</ul>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Edit Customer{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form class="form" method="post" action="/customers/{{customer.id}}/edit">
+      <h3 class="form-heading">Edit customer <em>{{ customer.name }}</em> <a href="{{ url_for('index') }}" title="Back to homepage"><i class="fa fa-home pull-right"></i></a></h3>
+      <div class="form-group">
+        <label for="name">Name</label>
+        {{ form.name(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+          <label>City & State</label>
+          <div class="form-inline">
+            <div class="form-group">
+              {{ form.city(class_ = 'form-control', placeholder='City', autofocus = true) }}
+            </div>
+            <div class="form-group">
+              {{ form.state(class_ = 'form-control', placeholder='State', autofocus = true) }}
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        {{ form.address(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="postal_code">Postal Code & Phone</label>
+        <div class="form-inline">
+          <div class="form-group">
+              {{ form.postal_code(class_ = 'form-control', placeholder='Postal Code', autofocus = true) }}
+          </div>
+          <div class="form-group">
+            {{ form.phone(class_ = 'form-control', placeholder='xxx-xxx-xxxx', autofocus = true) }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Company Description</label>
+        {{ form.description(class_ = 'form-control', placeholder='Description', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="sector">Sector</label>
+        {{ form.sector(class_ = 'form-control', placeholder='Sector', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="services">Services</label>
+        {{ form.services(class_ = 'form-control', placeholder='Services', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        {{ form.website(class_ = 'form-control', placeholder='http://', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="facebook-link">Facebook Link</label>
+        {{ form.facebook_link(class_ = 'form-control', placeholder='http://', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="image-link">Image Link</label>
+        {{ form.image_link(class_ = 'form-control', placeholder='http://', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="jobs">Jobs</label>
+        <small>Ctrl+Click to select multiple</small>
+        {{ form.jobs(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <input type="submit" value="Accept Customer Edits" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layouts/main.html' %}
+{% block title %}MyFridge{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1>MyFridge</h1>
+		<p class="lead">Eat Clean. Clean Earth</p>
+		<h3>
+			<a href="/recipes"><button class="btn btn-primary btn-lg">Find a Recipe</button></a>
+		</h3>
+		<h3>
+			<a href="/users"><button class="btn btn-primary btn-lg">Find a User</button></a>
+			<a href="/users/create"><button class="btn btn-default btn-lg">Add a User</button></a>
+		</h3>
+		<h3>
+			<a href="/products"><button class="btn btn-primary btn-lg">Find a product</button></a>
+			<a href="/products/create"><button class="btn btn-default btn-lg">Add a product</button></a>
+		</h3>
+	</div>
+	<div class="col-sm-6 hidden-sm hidden-xs">
+		<img id="front-splash" src="{{ url_for('static',filename='img/myfridge-splash.png') }}" alt="Front Photo of Productive App" />
+	</div>
+	<form class="form-upload" method=post enctype=multipart/form-data>
+        <h1 class="h3 mb-3 font-weight-normal">Please Upload</h1>
+        <input type="file" id="image" name=image class="form-control" required autofocus>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Add Receipt</button>
+        <br>
+        {% if image_loc %}
+          <img class="mb-4" src="static/{{ image_name }}" alt="" width="256" height="256">
+          <h3 class="h3 mb-3 font-weight-normal">Prediction: {{Prediction}}</h3>
+        {% endif %}
+      </form>
+</div>
+{% endblock %}

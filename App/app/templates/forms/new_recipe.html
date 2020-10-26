@@ -1,0 +1,38 @@
+{% extends 'layouts/main.html' %}
+{% block title %}New Job{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form method="post" class="form">
+      <h3 class="form-heading">Create a new job</h3>
+      <div class="form-group">
+        <label for="customer">Customer</label>
+        {{ form.customer(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for=job_number>Job Number</label>
+          {{ form.number(class_ = 'form-control', placeholder='ABCYYMMXXX', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for=job_type>Job Type</label>
+          {{ form.type(class_ = 'form-control', placeholder='Type', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="hours_budgeted">Hours Budgeted</label>
+        {{ form.budget_hrs(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="assigned_employees">Assigned Employees</label>
+            {{ form.employees(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="job_leaders">Assigned Job Lead(s)</label>
+        {{ form.lead_employee(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="date_created">Job Creation Date</label>
+        {{ form.create_date(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <input type="submit" value="Create Job" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+{% endblock %}

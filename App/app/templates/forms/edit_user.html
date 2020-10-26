@@ -1,0 +1,80 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Edit Employee{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <form method="post" class="form">
+    <h3 class="form-heading">Edit employee ID: {{ employee.id }}</h3>
+    <div class="form-group">
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          {{ form.first_name(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
+        <label for="middle_name">Middle Name</label>
+          {{ form.middle_name(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
+        <label for="last_name">Last Name</label>
+          {{ form.last_name(class_ = 'form-control', autofocus = true) }}
+        </div>
+    </div>
+      <div class="form-group">
+        <label for="city">City & State</label>
+        <div class="form-inline">
+          <div class="form-group">
+            {{ form.city(class_ = 'form-control', placeholder='City', autofocus = true) }}
+          </div>
+          <div class="form-group">
+            {{ form.state(class_ = 'form-control', placeholder='State', autofocus = true) }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+          {{ form.address(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <div class="form-inline">
+          <label for="postal_code">Postal Code & Phone</label>
+          <div class="form-group">
+            {{ form.postal_code(class_ = 'form-control', placeholder='Postal Code', autofocus = true) }}
+          </div>
+          <div class="form-group">
+            {{ form.phone(class_ = 'form-control', placeholder='xxx-xxx-xxxx', autofocus = true) }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="job_title">Job Title</label>
+          {{ form.job_title(class_ = 'form-control', placeholder='Job Title', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+          {{ form.email(class_ = 'form-control', placeholder='first.last@company.com', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="date_started">Date Started</label>
+          {{ form.date_started(class_ = 'form-control', placeholder='YYYY-MM-DD', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="skills">Skills</label>
+          {{ form.skills(class_ = 'form-control', placeholder='Skills', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="location">Office Location</label>
+        <small>Ctrl+Click to select multiple</small>
+          {{ form.location(class_ = 'form-control', placeholder='Location', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="image-link">Image Link</label>
+          {{ form.image_link(class_ = 'form-control', placeholder='http://', autofocus = true) }}
+      </div>
+      <div class="form-group">
+        <label for="jobs">Current Jobs</label>
+        <small>Ctrl+Click to select multiple</small>
+        {{ form.jobs(class_ = 'form-control', autofocus = true) }}
+      </div>
+    <input type="submit" value="Accept Employee Edits" class="btn btn-primary btn-lg btn-block">
+  </form>
+</div>
+{% endblock %}

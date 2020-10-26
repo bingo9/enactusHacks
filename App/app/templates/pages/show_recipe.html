@@ -1,0 +1,70 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Customer Search{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ customer.name }}
+			<button class="delete-button" type="button" id="delete-customer-btn" data-method="delete" data-id="{{customer.id}}" title="Delete Customer">
+				&cross; 
+			</button>
+			<a href='/customers/{{customer.id}}/edit' class=edit-button id=edit-venue_btn title="Edit Customer">
+				<i class="fas fa-edit"></i>
+			</a>
+		</h1>
+		<p class="subtitle">
+			ID: {{ customer.id }}
+		</p>
+		<p>
+			<i class="fas fa-globe-americas"></i> {{ customer.city }}, {{ customer.state }}
+		</p>
+		<p>
+			<i class="fas fa-map-marker"></i> {% if customer.address %}{{ customer.address }}{% else %}No Address{% endif %}
+		</p>
+		<p>
+			<i class="fas fa-phone-alt"></i> {% if customer.phone %}{{ customer.phone }}{% else %}No Phone{% endif %}
+		</p>
+		<p>
+			<i class="fas fa-link"></i> {% if customer.website %}<a href="{{ customer.website }}" target="_blank">{{ customer.website }}</a>{% else %}No Website{% endif %}
+		</p>
+		<p>
+			<i class="fab fa-facebook-f"></i> {% if customer.facebook_link %}<a href="{{ customer.facebook_link }}" target="_blank">{{ customer.facebook_link }}</a>{% else %}No Facebook Link{% endif %}
+		</p>
+		<p>
+			<i class="fas fa-map-marker"></i> {% if customer.description %}{{ customer.description }}{% else %}No Description{% endif %}
+		</p>
+		<h5 class="monospace"># of Active Jobs: {{ customer.num_of_current_jobs }}</h5>
+		<h5 class="monospace"># of Past Jobs: {{ customer.num_of_past_jobs }}</h5>
+	</div>
+
+	<div class="col-sm-6">
+		<img src="{{ customer.image_link }}" alt="Customer Image" />
+	</div>
+</div>
+<section>
+</section>
+
+<script>
+	const deleteBtn = document.getElementById('delete-customer-btn')
+	console.log(deleteBtn);
+	deleteBtn.onclick=function(e){
+		console.log('event',e);
+		const id = e.target.dataset['id'];
+		fetch('/customers/' + id,{
+			method: 'DELETE',
+		})
+		.then(response => {
+			if (response.redirected) {
+				window.location.href = response.url;
+			}
+		})
+		.catch(function(err) {
+			console.info(err + " url: " + '/customers/' + id);
+		});
+	}
+</script>
+
+{% endblock %}
+
+
+
